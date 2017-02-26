@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>USNISA | Admin Blog</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    
+    <!-- Font awesome -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">   
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">     
+
+    <!-- Main style sheet -->
+    <link href="css/style.css" rel="stylesheet">    
+
+   
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+	<!-- Adding angular -->
+	<script src="js/angular.min.js"></script>
+	<!-- Application Configurations -->
+	<script src="controllers/config.js"></script>
+
+  </head>
+  <body>
+  <!-- Pre Loader -->
+  <div id="aa-preloader-area">
+    <div class="pulse"></div>
+  </div>
+  <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+ 
+  <!-- Start menu section -->
+  <section id="aa-menu-area">
+    <nav class="navbar navbar-default main-navbar" role="navigation">  
+      <div class="container">
+        <div class="navbar-header">
+          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand aa-logo-img" href="admin.html"><img src="img/usnisa-logo.png" alt="logo"></a>                     
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
+            <li><a href="admin.html">HOME</a></li>
+            <li><a href="#" id="logoutBtn">LOGOUT</a></li>
+          </ul>                          
+        </div><!--/.nav-collapse -->       
+      </div>          
+    </nav> 
+  </section>
+  <!-- End menu section -->
+
+  <!-- Start Blog header  -->
+  <section id="aa-property-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-property-header-inner">
+            <h2>Please Give Blog Details</h2>
+            <ol class="breadcrumb">
+	            <li><a href="#">Admin</a></li>            
+	            <li class="active">Add or Update Blog</li>
+          	</ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  
+  <!-- Add Blog Section -->
+  <section id="aa-add-property-section">
+    <div class="container">
+      <h2>Enter Details</h2>	
+	  <div class="row">
+	  	<div class="col-md-12">
+  			<div class="row">
+  				<div class="col-md-6">
+				    <div class="form-group">
+						<label><span id="errorHeader" style="display:none;" class="required">Please fill all mandatory fields</span></label>
+					</div>
+	                <div class="form-group">
+	                  <label for="blogTitle">Title <span class="required">*</span></label>
+	                  <input id="blogTitle" class="form-control" type="text" required="required" value="" name="blogTitle">
+	                </div>
+	                <div class="form-group">
+	                  <label for="blogAuthor">Author <span class="required">*</span></label>
+	                  <input id="blogAuthor" class="form-control" type="text" required="required" value="" name="blogAuthor">
+	                </div>
+	                <div class="form-group">
+	                  <label for="blogDescription">Description</label>
+	                  <textarea id="blogDescription"  class="form-control" name="blogDescription" rows="5"></textarea> 
+	                </div>
+					<div class="form-group">
+	                  <label for="photos">Pictures <span class="required">*</span></label>
+					  <input id="browse" class="form-control" type="file" onchange="previewFiles()" multiple>
+	                </div>
+	                <div class="form-group">
+						<input id="saveNewBtn" type="submit" value="Submit" name="submit" onclick="saveBlog()" class="btn btn-primary">
+						<input id="updateBtn" type="submit" value="update" name="update" class="btn btn-primary">	
+	                </div>						
+  				</div>
+  				<div class="col-md-6">
+  					<div id="preview" class="previewImages"></div>
+  				</div>
+  			</div>	
+
+	  	</div>
+	  
+	  </div>
+	</div>
+  </section>
+  
+  <!-- jQuery library -->
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.js"></script>   
+  <!-- Bootbox for alerts and popups -->
+  <script src="js/bootbox.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src="js/nouislider.js"></script>
+  
+  <!-- Custom js -->
+  <script src="js/custom.js"></script> 
+  
+  
+  <script>
+  
+	$(document).ready(function(){
+		checkAdminAuth();
+		var blogId = getParameterByName("blogId");
+		if(blogId) {
+			$('#updateBtn').show();
+			$('#saveNewBtn').hide();
+			loadPropertyToModify(blogId);
+		}
+		else {
+			$('#updateBtn').hide();
+			$('#saveNewBtn').show();
+		}
+		
+		//calling update propert handler
+		$('#updateBtn').click(function(){updateBlog(blogId)});
+		
+	});
+
+	//to remove the image
+	$('#preview').on('click', '.removeImg' ,function(){
+		$(this).parent().remove();
+	});
+	
+	//container for images to upload
+	var imageFiles = [];
+	
+	//function to load the property details to modify
+	function loadPropertyToModify(blogId) {
+		$.ajax({
+		  type: "GET",
+		  url: baseURL + '/blog/' + blogId,
+		  success: function(response){
+			$("#blogTitle").val(response[0]['blogTitle']);
+			$("#blogAuthor").val(response[0]['blogAuthor']);
+			$("#blogDescription").val(response[0]['blogDescription']);
+			imageFiles = imageFiles.concat(response[0]['blogPictures']);
+			$(imageFiles).each(function(){
+				var blogImage = '<div class="img-wrap">' +
+									'<span class="removeImg">&times;</span>' +
+									'<img src="'+ this +'" height = "100">' +
+								'</div>';
+				$('#preview').append(blogImage);
+			});
+			
+		  },
+		  error: function(errResponse){
+			console.log(errResponse);	
+		  }
+		});
+	}
+	
+	//function to get query string parameter from url
+	function getParameterByName(name, url) {
+		if (!url) 
+			url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+	
+	//function to check whether user is admin or not
+	function checkAdminAuth() {
+		$.ajax({
+		  type: "GET",
+		  url: baseURL + '/auth/checkAdmin',
+		  success: function(response){
+			  if(response.status == 401 || response.status == 403)
+				  window.location.replace("/index.html");
+		  },
+		  error: function(errResponse){
+			if(errResponse.status == 401 || errResponse.status == 403)
+				  window.location.replace("/index.html");	
+		  }
+		});
+	}
+
+	//Logout and redirect method
+	$('#logoutBtn').click(function(){
+  		$.ajax({
+		  type: "GET",
+		  url: baseURL + '/auth/logout',
+		  success: function(response){
+			window.location.replace("/index.html");
+		  },
+		  error: function(errResponse){
+			console.log(errResponse);	
+		  }
+		});
+  	});
+
+	//function to preview and load images
+	function previewFiles() {
+	
+	  var files   = document.querySelector('input[type=file]').files;
+	
+	  function readAndPreview(file) {
+	
+	    // Make sure `file.name` matches our extensions criteria
+	    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+	      var reader = new FileReader();
+	
+	      reader.addEventListener("load", function () {
+	        var blogImage = '<div class="img-wrap">' +
+								'<span class="removeImg">&times;</span>' +
+								'<img src="'+ this.result +'" height = "100">' +
+							'</div>';
+			$('#preview').append(blogImage);				
+			
+			imageFiles.push(this.result);
+			
+	      }, false);
+	
+	      reader.readAsDataURL(file);
+	    }
+	
+	  }
+	
+	  if (files) {
+	    [].forEach.call(files, readAndPreview);
+	  }
+	  
+	}
+	
+	//function to validate the information and return for save or update
+	function validateBlogDetails() {
+		var imageCount = 0;
+		
+		var imagesToPost = [];
+		$('#preview img').each(function(){
+			imageCount++;
+			imagesToPost.push($(this).attr('src'));	
+		});
+		
+		$("#errorHeader").hide();
+		
+		var isEmpty = $("#blogTitle").val() == "" || $("#blogAuthor").val() == "" || imageCount == 0;   
+		
+		if(isEmpty) {
+			$("#errorHeader").show();
+		}	
+		else {
+		
+			var postBlog = {};
+			postBlog['blogTitle'] = $("#blogTitle").val();
+			postBlog['blogAuthor'] = $("#blogAuthor").val();
+			if($("#propertyDescription").val() != "")
+				postBlog['blogDescription'] = $("#blogDescription").val();
+			else
+				postBlog['blogDescription'] = "NA";
+			
+			postBlog['blogPictures'] = imagesToPost;
+					
+			console.log(postBlog);
+					
+			return postBlog;
+		}
+	}
+	
+	//function to save or modify property
+	function saveBlog() {
+		bootbox.confirm({ 
+			size: "small",
+			message: "Are you sure?", 
+			callback: function(result){
+				if(result) {		
+					$.ajax({
+					  type: "POST",
+					  url: baseURL + '/blog/',
+					  data: validateBlogDetails(),
+					  success: function(response){
+						  if(response.status == 200) {
+							bootbox.confirm({
+								size: "small",
+								message: "Added Sucessfully, want to add more?",
+								callback: function(resultForAdd){
+									if(resultForAdd) {
+										location.reload();
+									}
+									else {
+										location.href = "/admin.html";
+									}
+								}
+							});
+						  }
+					  },
+					  error: function(){}
+					});
+				}	
+			}
+		});
+	}
+	
+	//function to update the property details
+	function updateBlog(blogId) {
+		
+		bootbox.confirm({ 
+			size: "small",
+			message: "Are you sure?", 
+			callback: function(result){
+				if(result) {		
+					$.ajax({
+					  type: "PUT",
+					  url: baseURL + '/blog/' + blogId,
+					  data: validateBlogDetails(),
+					  success: function(response){
+						  if(response.status == 200) {
+							bootbox.alert({
+								size: "small",
+								message: "Updated Sucessfully",
+								callback: function(){
+									location.href = "/admin.html";
+								}
+							});
+						  }
+					  },
+					  error: function(){}
+					});
+				}	
+			}
+		});
+	}
+	
+	</script>
+  
+  </body>
+</html>
