@@ -14,7 +14,7 @@ app.use('/', httpsRedirect());
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '80');
+var port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 
@@ -28,7 +28,7 @@ var ssl_options = {
  * Create HTTPS server.
  */
 
-var serverSSL = https.createServer(ssl_options,app).listen(443);
+var serverSSL = https.createServer(ssl_options,app).listen(4433);
 
 
 /**
